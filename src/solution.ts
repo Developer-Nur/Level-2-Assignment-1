@@ -1,6 +1,6 @@
-type inputType = string | number | boolean;
+type InputType = string | number | boolean;
 
-const formatValue = (input: inputType): string | number | boolean => {
+const formatValue = (input: InputType): string | number | boolean => {
   if (typeof input === "string") {
     return input.toUpperCase();
   } else if (typeof input === "number") {
@@ -11,5 +11,16 @@ const formatValue = (input: inputType): string | number | boolean => {
   }
 };
 
-// ============================ 222222222222222222222 =========================
+type StringOrArray = string | any[];
+
+const getLength = (input: StringOrArray): number | undefined => {
+  if (typeof input === "string") {
+    return input.length;
+  } else if (Array.isArray(input)) {
+    return input.length;
+  }
+};
+
+// ============================ 3333333333333333333333=========================
+
 
