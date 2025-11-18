@@ -11,7 +11,7 @@ const formatValue = (input: InputType): string | number | boolean => {
   }
 };
 
-// ============================ 222222222222222222222 =========================
+
 
 type StringOrArray = string | any[];
 
@@ -23,7 +23,7 @@ const getLength = (input: StringOrArray): number | undefined => {
   }
 };
 
-// ============================ 3333333333333333333333=========================
+
 
 class Person {
   name: string;
@@ -38,20 +38,18 @@ class Person {
   }
 }
 
-// ============================ 4444444444444444444444444 =========================
+
 
 type TopRating = {
   title: string;
   rating: number;
 };
 
-type ArrayOfTopRated = TopRating[];
-
-const filterByRating = (input: ArrayOfTopRated): ArrayOfTopRated => {
+const filterByRating = (input: TopRating[]): TopRating[] => {
   return input.filter((item) => item.rating >= 4);
 };
 
-// ============================ 55555555555555555555555555555 =========================
+
 
 type Users = {
   id: number;
@@ -60,19 +58,11 @@ type Users = {
   isActive: boolean;
 };
 
-type UsersArray = Users[];
-
-const filterActiveUsers = (input: UsersArray): UsersArray => {
+const filterActiveUsers = (input: Users[]): Users[] => {
   return input.filter((item) => item.isActive === true);
 };
 
-const users = [
-  { id: 1, name: "Rakib", email: "rakib@example.com", isActive: true },
-  { id: 2, name: "Asha", email: "asha@example.com", isActive: false },
-  { id: 3, name: "Rumi", email: "rumi@example.com", isActive: true },
-];
 
-// ============================ 66666666666666666666666666666666666 =========================
 
 interface Book {
   title: string;
@@ -89,5 +79,51 @@ const printBookDetails = (input: Book): string => {
 };
 
 
-// ============================ 777777777777777777777777777777777777 =========================
 
+type CheckUnique = string | number;
+
+const getUniqueValues = (
+  array1: CheckUnique[],
+  array2: CheckUnique[]
+): CheckUnique[] => {
+  const result: CheckUnique[] = [];
+
+  for (const item of [...array1, ...array2]) {
+    let isSame = false;
+
+    for (const element of result) {
+      if (element === item) {
+        isSame = true;
+        break;
+      }
+    }
+    if (!isSame) result.push(item);
+  }
+  return result;
+};
+
+
+
+type ProductInfo = {
+  name: string;
+  price: number;
+  quantity: number;
+  discount?: number;
+};
+
+const calculateTotalPrice = (input: ProductInfo[]) => {
+  if (!input || input.length === 0) {
+    return 0;
+  }
+
+  return input.reduce((total: number, item: ProductInfo) => {
+    let price = item.price * item.quantity;
+
+    if (item.discount && item.discount > 0) {
+      const discountAmount = price * (item.discount / 100);
+      price -= discountAmount;
+    }
+
+    return total + price;
+  }, 0);
+};
