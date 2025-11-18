@@ -36,6 +36,7 @@ type Person = {
 // type Person = {
 //   age: number;
 // };
+```
 
 ২. keyof Keyword-এর ব্যবহার কী?
 
@@ -48,11 +49,13 @@ keyof ব্যবহার করে এমন একটি ফাংশন ত
 💡 উদাহরণ
 TypeScript
 
+```
 type User = {
   id: number;
   name: string;
   email: string;
 };
+
 
 // UserKeys হলো "id" | "name" | "email"
 type UserKeys = keyof User;
@@ -73,9 +76,8 @@ console.log(getValue(user, "name")); // ✅ Valid (Compile Time-এ পাস)
 // console.log(getValue(user, "age"));
 // Error: Argument of type '"age"' is not assignable to parameter of type 'keyof User'.
 // (Compile Time-এ ধরা পড়ে)
-
+```
 ব্যবহারের সুবিধা
 Compile Time Error: ভুল Key ব্যবহার করলে Compile Time-এই Error ধরা পড়ে।
 
 Runtime Safety: এর ফলে Runtime Error হওয়ার সম্ভাবনা কমে যায়।
-```
